@@ -1,6 +1,6 @@
 {
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
-  "version": 1, 
+  "version": 1,
   "newProjectRoot": "projects",
   "projects": {
     "demo-wps-ng-client": {
@@ -119,6 +119,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "demo-wps-ng-client"
+    }
+  },
+  "defaultProject": "demo-wps-ng-client",
+  "cli": {
+    "analytics": "22a54cd6-b2be-458f-87fb-cfa086a84b0c"
+  }
 }
