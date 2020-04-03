@@ -23,5 +23,7 @@ export class AppComponent {
     this.response = this.serviceInfo.getCapabilities_GET(this.selectedUrl, this.selectedVersion);
   }
 
-  call_DescribeProcess() { }
+  call_DescribeProcess() {
+    this.response = this.describeProcess.describeProcess_GET(this.selectedUrl, this.selectedVersion, this.selectedProcessId);
+  }
 }
