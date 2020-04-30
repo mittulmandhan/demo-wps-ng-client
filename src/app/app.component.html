@@ -13,22 +13,16 @@
         <label for="version">Version:</label>
 
         <select id="version" [(ngModel)]="selectedVersion">
-  <option  value="1.0.0">1.0.0</option>
-  <option  value="2.0.0">2.0.0</option>
-</select>
+            <option  value="1.0.0">1.0.0</option>
+            <option  value="2.0.0">2.0.0</option>
+        </select>
     </div>
 </div>
 <div>
     <label for="process-id">Process Identifier:</label>
     <input type="text" id="process-id" [(ngModel)]="selectedProcessId">
 </div>
-<div class="container shadow p-3 mb-5 bg-light rounded" *ngIf="response">
-    <pre>
-    <code>
-      {{ response }}
-    </code>
-  </pre>
-</div>
+
 <div class=" container col-12">
     <div class="my-button col-md-1">
         <button type="button" class="btn btn-primary text-dark" (click)="call_getCapabilities()">Service Info</button>
@@ -36,6 +30,24 @@
     <div class="my-button col-md-1">
         <button type="button" class="btn btn-warning text-dark" (click)="call_DescribeProcess()">Describe Process</button>
     </div>
+</div>
+<div class="container shadow p-3 mb-5 bg-light rounded" *ngIf="capabilitiesResponse">
+    <pre>
+    <code>
+      {{ capabilitiesResponse.service }}
+      {{ capabilitiesResponse.title }}
+      {{ capabilitiesResponse.version }} 
+       <div *ngFor="let process of capabilitiesResponse.processes; let i of index">
+          {{ i }}
+          {{ process.title }}
+          {{ process.processVersion }}
+          {{ process.identifier }}
+          {{ process.jobControlOptions }}
+          {{ process.outputTransmission }}
+
+      </div>
+    </code>
+  </pre>
 </div>
 <!-- <div class="col-md-12">
     <input type="text" class="col-md-12" [(ngModel)]="selectedUrl">
