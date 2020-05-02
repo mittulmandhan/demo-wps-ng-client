@@ -22,7 +22,7 @@
     <label for="process-id">Process Identifier:</label>
     <input type="text" id="process-id" [(ngModel)]="selectedProcessId">
 </div>
-
+<!-- <input type="text" [(ngModel)]="capabilitiesResponse"> -->
 <div class=" container col-12">
     <div class="my-button col-md-1">
         <button type="button" class="btn btn-primary text-dark" (click)="call_getCapabilities()">Service Info</button>
@@ -33,22 +33,24 @@
 </div>
 <div class="container shadow p-3 mb-5 bg-light rounded" *ngIf="capabilitiesResponse">
     <pre>
-    <code>
-      {{ capabilitiesResponse.service }}
-      {{ capabilitiesResponse.title }}
-      {{ capabilitiesResponse.version }} 
-       <div *ngFor="let process of capabilitiesResponse.processes; let i of index">
-          {{ i }}
-          {{ process.title }}
-          {{ process.processVersion }}
-          {{ process.identifier }}
-          {{ process.jobControlOptions }}
-          {{ process.outputTransmission }}
-
-      </div>
-    </code>
-  </pre>
+        <code>
+            {{ capabilitiesResponse.service }}
+            {{ capabilitiesResponse.title }}
+            {{ capabilitiesResponse.version }}
+            <hr>
+            <h3>Process Summaries:</h3>
+            <div *ngFor="let process of capabilitiesResponse.processes;">
+                {{ process.title }}
+                {{ process.processVersion }}
+                {{ process.identifier }}
+                {{ process.jobControlOptions }}
+                {{ process.outputTransmission }}
+                <hr>
+            </div>
+        </code>
+    </pre>
 </div>
+
 <!-- <div class="col-md-12">
     <input type="text" class="col-md-12" [(ngModel)]="selectedUrl">
 </div> -->
