@@ -25,7 +25,6 @@ export class AppComponent {
   call_getCapabilities() {
     this.capabilitiesResponse = new Capabilities();
     this.serviceInfo.getCapabilities_GET(this.selectedUrl, this.selectedVersion, this.capabilitiesResponse);
-    console.log(this.capabilitiesResponse);
   }
 
   call_DescribeProcess() {

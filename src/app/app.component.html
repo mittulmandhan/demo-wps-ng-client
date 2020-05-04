@@ -34,17 +34,18 @@
 <div class="container shadow p-3 mb-5 bg-light rounded" *ngIf="capabilitiesResponse">
     <pre>
         <code>
-            {{ capabilitiesResponse.service }}
-            {{ capabilitiesResponse.title }}
-            {{ capabilitiesResponse.version }}
+            <h3>Service Info:</h3>
+            <b>Service:</b> {{ capabilitiesResponse.service }}
+            <b>Service Title:</b> {{ capabilitiesResponse.title }}
+            <b>Service Version:</b> {{ capabilitiesResponse.version }}
             <hr>
             <h3>Process Summaries:</h3>
             <div *ngFor="let process of capabilitiesResponse.processes;">
-                {{ process.title }}
-                {{ process.processVersion }}
-                {{ process.identifier }}
-                {{ process.jobControlOptions }}
-                {{ process.outputTransmission }}
+                <b>Title:</b> {{ process.title }}
+                <b>Process Version:</b> {{ process.processVersion }}
+                <b>Identifier:</b> {{ process.identifier }}
+                <b>Job Control Options:</b> {{ process.jobControlOptions }}
+                <b>Output Transmission:</b> {{ process.outputTransmission }}
                 <hr>
             </div>
         </code>

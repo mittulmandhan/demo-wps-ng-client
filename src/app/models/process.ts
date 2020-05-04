@@ -1,7 +1,7 @@
 export class Process {
     identifier: string;
-    jobControlOptions: string;
-    outputTransmission: string;
+    jobControlOptions = 'not found';
+    outputTransmission = 'not found';
     processVersion: string;
     title: string;
 }
