@@ -3,6 +3,12 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
+   wpsUrls: [
+              'http://geoprocessing.demo.52north.org:8080/wps-proxy',
+              'https://riesgos.52north.org/wps/WebProcessingService',
+              'http://geoprocessing.demo.52north.org:8080/javaps/service'
+  ],
+
   production: false
 };
 

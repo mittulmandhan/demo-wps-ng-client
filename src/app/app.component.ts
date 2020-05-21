@@ -1,34 +1,47 @@
-import { Component } from '@angular/core';
-import { ServiceinfoService } from './services/serviceinfo.service';
-import { DescribeprocessService } from './services/describeprocess.service';
-import { Capabilities } from './models/capabilities';
-import { Process } from './models/process';
-@Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
-})
+import { environment } from './../environments/environment';
+import {CapabilityResponse} from './models/CapabilityResponse';
+import {Component} from '@angular/core';
+import {ServiceinfoService} from './services/serviceinfo.service';
+import {DescribeprocessService} from './services/describeprocess.service';
+import {ProcessOffering} from './models/processOffering';
+@Component({selector: 'app-root', templateUrl: './app.component.html', styleUrls: ['./app.component.css']})
 export class AppComponent {
-  title = 'Demo WPS Angular Client';
-  serviceUrls = [
-    'http://geoprocessing.demo.52north.org:8080/wps/WebProcessingService',
-    'https://riesgos.52north.org/wps/WebProcessingService',
-    'http://geoprocessing.demo.52north.org:8080/javaps/service'
-  ];
-  selectedUrl = 'http://geoprocessing.demo.52north.org:8080/wps/WebProcessingService';
-  selectedVersion: '1.0.0' | '2.0.0' = '2.0.0';
-  selectedProcessId: string;
-  capabilitiesResponse: Capabilities;
-  processCount = 1;
+    title = 'Demo WPS Angular Client';
+    selectedUrl = environment.wpsUrls[0];
+    selectedVersion: '1.0.0' | '2.0.0' = '2.0.0';
+    selectedProcessId: string;
+    capabilitiesResponse: CapabilityResponse;
+    processResponse: ProcessOffering;
+    processCount = 1;
 
-  constructor(private serviceInfo: ServiceinfoService, private describeProcess: DescribeprocessService) {}
-  call_getCapabilities() {
-    this.capabilitiesResponse = new Capabilities();
-    this.serviceInfo.getCapabilities_GET(this.selectedUrl, this.selectedVersion, this.capabilitiesResponse);
-  }
+    constructor(private serviceInfo: ServiceinfoService, private describeProcess: DescribeprocessService) {}
 
-  call_DescribeProcess() {
-    this.capabilitiesResponse = this.describeProcess.describeProcess_GET(this.selectedUrl, this.selectedVersion, this.selectedProcessId);
-    console.log(this.capabilitiesResponse);
-  }
+    getCapabilities() {
+        this.serviceInfo.getCapabilities(this.selectedUrl, this.selectedVersion).subscribe((res: CapabilityResponse) => {
+            console.log('Hello', res);
+            this.capabilitiesResponse = res;
+            console.log('capabilitiesResponse', this.capabilitiesResponse);
+        });
+    }
+
+    processOffering() {
+        this.processResponse = new ProcessOffering();
+        this.describeProcess.describeProcess_GET(this.selectedUrl, this.selectedVersion, this.selectedProcessId, this.processResponse);
+    }
+
+    public get processSummaries() {
+      return this.capabilitiesResponse.Capabilities.Contents.ProcessSummaries;
+    }
+
+    public get identification() {
+      return this.capabilitiesResponse.Capabilities.ServiceIdentification;
+    }
+
+    public get urls() {
+      return environment.wpsUrls;
+    }
+
+    public getVersion() {
+      return this.capabilitiesResponse.Capabilities._version;
+    }
 }
