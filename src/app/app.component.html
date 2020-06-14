@@ -19,18 +19,18 @@
 </div>
 <div class="row-1 col-12" *ngIf="capabilitiesResponse">
     <label for="process-id">Process:</label>
-    <select class="col-9" id="process-id" [(ngModel)]="selectedProcessId">
+    <select class="col-9" id="process-id" [(ngModel)]="processUrl">
         <option value=undefined selected disabled hidden>Select an Option</option>
-        <option *ngFor="let p of processSummaries" value="{{ p.identifier }}">{{ p.title }}</option>
+        <option *ngFor="let p of processSummaries" value="{{ p.url }}">{{ p.title }}</option>
     </select>
     <!-- <input type="text" id="process-id" [(ngModel)]="selectedProcessId"> -->
 </div>
-<div class=" container col-12">
+<div class="container col-12">
     <div class="my-button col-md-1">
         <button type="button" class="btn btn-primary text-dark" (click)="getCapabilities()">Service Info</button>
     </div>
     <div class="my-button col-md-1">
-        <button type="button" class="btn btn-warning text-dark" (click)="processOffering()">Describe Process</button>
+        <button type="button" class="btn btn-warning text-dark" (click)="getProcessOffering()">Describe Process</button>
     </div>
 </div>
 <div class="container shadow p-3 mb-5 bg-light rounded" *ngIf="capabilitiesResponse">
