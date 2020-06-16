@@ -40,7 +40,6 @@ export class GetCapabilitiesComponent implements OnInit {
           console.log(this.processOfferingResponse);
           console.log(this.processOfferingResponse.ProcessOffering._executeUrl);
           console.log(this.processOfferingResponse.ProcessOffering.Process.Identifier);
-
       });
   }
 
@@ -56,7 +55,7 @@ export class GetCapabilitiesComponent implements OnInit {
     return environment.wpsUrls;
   }
 
-  public getVersion() {
+  public get version() {
     return this.capabilitiesResponse.Capabilities._version;
   }
 }

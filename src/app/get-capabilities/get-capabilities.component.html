@@ -40,7 +40,7 @@
             <b>Service:</b> {{ identification.ServiceType }}
             <b>Service Title:</b> {{ identification.Title }}
             <b>Service Description:</b> {{ identification.Abstract }}
-            <b>Service Version:</b> {{ getVersion() }}
+            <b>Service Version:</b> {{ version }}
             <hr>
             <h3>Process Summaries:</h3>
             <div *ngFor="let process of processSummaries">
