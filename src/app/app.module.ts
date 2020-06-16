@@ -10,6 +10,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { GeoSpatialComponent } from './geo-spatial/geo-spatial.component';
 import { GetCapabilitiesComponent } from './get-capabilities/get-capabilities.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    AppRoutingModule
+    AppRoutingModule,
+    BrowserAnimationsModule
   ],
   providers: [
     ServiceinfoService,
